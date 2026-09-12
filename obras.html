@@ -2,13 +2,13 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Biografia</title>
+        <title>Obras</title>
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
         <div class="contenedor-principal">
          <header class="encabezado">
-            <h1 class="titulo-fuente"> cambiar por el nombre del artista</h1>
+            <h1 class="titulo-fuente"> Rafael Lozano-Hemmer</h1>
             <nav class="menu-navegacion">
                 <ul>
                     <li> <a href="index.html" class="activo">Inicio</a></li>
@@ -30,6 +30,63 @@
             <section id="galeria-obras" class="vista-grid">
 
             </section>
+            
+            <section class="contenedor-ejercicio">
+                <h2 class="titulo-fuente">Sistema de control de luces moviles</h2>
+                <p>Complete los campos para calcular el consumo y costos de las obras</p>
+
+                <fieldset id="paso-configuracion">
+                    <legend class="tituelo-fuente"> Paso 1: configuracion general</legend>
+                    <form id="form-config">
+                        <div class="campo">
+                            <label for="cant-obras">Cantidad de obras:</label>
+                            <input type="number" id="cant-obras" min="1" required>
+                        </div>
+                        <div class="campo">
+                            <label for="consumo-hora">Consumo por hora de cada luz (kWh)</label>
+                            <input type="number" id="consumo-hora" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="campo">
+                            <label for="costo-kwh">Costo por kWh ($)</label>
+                            <input type="number" id="costo-kwh" step="0.01" min="0.01" required>
+                        </div>
+                        <button type="button" id="btn-iniciar-carga">Confirmar</button>
+                    </form>
+                </fieldset>
+
+                <fieldset id="paso-obras" disabled>
+                    <legend class="titulo-fuente">Paso 2: Carga de Obras (<span id="contador-obras">0</span>/<span id="total-obras-lbl">0</span>)</legend>
+                    <form id="form-obra">
+                        <div class="campo">
+                            <label for="nombre-obra">Nombre de la obra:</label>
+                            <input type="text" id="nombre-obra" required>
+                        </div>
+                        <div class="campo">
+                            <label for="luces-obra">Cantidad de luces moviles</label>
+                            <input type="number" id="luces-obra" min="1" required>
+                        </div>
+                        <div class="campo">
+                            <label for="tiempo-obra">Tiempo de funcionamiento diario (horas):</label>
+                            <input type="number" id="tiempo-obra" step="0.1" min="0.1" max="25" required>
+                        </div>
+                        <button type="button" id="btn-agregar-obra">Agregaar Obra</button>
+                    </form>
+                </fieldset>
+
+                <div class="acciones-calculo">
+                    <button type="button" id="btn-calcular" disabled>Calular Resultados</button>
+                    <button type="button" id="btn-reiniciar" disabled>Reiniciar</button>
+                </div>
+
+                <div id="caja-resultados" class="resultados-ocultos">
+                    <h3 class="titulo-fuente">Resultados del Analisis</h3>
+                    <p><strong>Consumo diario total:</strong> <span id="res-consumo-total">-</span> kWh</p>
+                    <p><strong>Consumo diario promedio por obra:</strong> <span id="res-consumo-promedio">-</span> kWh</p>
+                    <p><strong>Obra con mayor tiempo de funcionamiento</strong> <span id="res-obra-mayor">-</span></p>
+                    <p><strong>Costo diario de la obra con mayor tiempo:</strong> $<span id="res-costo-mayor">-</span></p>
+                    <p><strong>Porcentaje de obras con mas de 20 luces:</strong> <span id="res-porcentaje-luces"></span></p>
+                </div>
+            </section>
          </main>
          <footer>
             jsabdia
@@ -37,5 +94,6 @@
         </div>
 
         <script src="js/galeria.js"></script>
+        <script src="js/ejercicio.js"></script>
     </body>
 </html>
